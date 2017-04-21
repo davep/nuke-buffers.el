@@ -33,7 +33,8 @@
    "*scratch*"
    "*Messages*")
   "List of buffers we should always ignore."
-  :type '(repeat (string :tag "Buffer name: ")))
+  :type '(repeat (string :tag "Buffer name: "))
+  :group 'nuke-buffers)
 
 (defun nuke-buffers-ignore-p (buffer)
   "Is BUFFER ignorable?"
