@@ -67,7 +67,9 @@
 (defun nuke-buffers ()
   "Kill as many buffers as possible, without losing important things."
   (interactive)
-  (mapc #'kill-buffer (nuke-buffers-get-candidates)))
+  (message "Nuked %d buffer(s)."
+           (length
+            (mapc #'kill-buffer (nuke-buffers-get-candidates)))))
 
 (provide 'nuke-buffers)
 
