@@ -2,7 +2,7 @@
 ;; Copyright 2017 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.2
+;; Version: 1.3
 ;; Keywords: convenience
 ;; URL: https://github.com/davep/nuke-buffers.el
 ;; Package-Requires: ((dash "2.12"))
