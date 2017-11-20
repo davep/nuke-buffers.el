@@ -5,7 +5,7 @@
 ;; Version: 1.3
 ;; Keywords: convenience
 ;; URL: https://github.com/davep/nuke-buffers.el
-;; Package-Requires: ((dash "2.12"))
+;; Package-Requires: (emacs "25.1")
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
@@ -30,7 +30,7 @@
 
 ;;; Code:
 
-(require 'dash)
+(require 'seq)
 
 (defgroup nuke-buffers nil
   "Safely kill as many buffers as possible."
@@ -62,15 +62,15 @@
 
 (defun nuke-buffers-get-candidates ()
   "Get the list of buffers we're likely to nuke."
-  (-filter (lambda (buffer)
-             (and
-              ;; If it's not a buffer we should always ignore...
-              (not (nuke-buffers-ignore-p buffer))
-              ;; ...and it's not an unsaved file...
-              (not (nuke-buffers-unsaved-file-buffer-p buffer))
-              ;; ..and it's not the current buffer.
-              (not (eq buffer (current-buffer)))))
-           (buffer-list)))
+  (seq-filter (lambda (buffer)
+                (and
+                 ;; If it's not a buffer we should always ignore...
+                 (not (nuke-buffers-ignore-p buffer))
+                 ;; ...and it's not an unsaved file...
+                 (not (nuke-buffers-unsaved-file-buffer-p buffer))
+                 ;; ..and it's not the current buffer.
+                 (not (eq buffer (current-buffer)))))
+              (buffer-list)))
 
 ;;;###autoload
 (defun nuke-buffers ()
