@@ -53,7 +53,7 @@
      ;; Minibuffer?
      (minibufferp buffer)
      ;; "Special" buffer?
-     (string-match "^ \\*" name)
+     (string-match (rx bol " *") name)
      ;; A buffer on the ignore list?
      (member name nuke-buffers-ignore))))
 
